@@ -12,6 +12,7 @@ const IOTA = require('iota.lib.js');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var attach = require('./routes/attach');
 
 var app = express();
 
