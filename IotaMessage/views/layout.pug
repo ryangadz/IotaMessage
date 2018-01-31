@@ -5,17 +5,14 @@ html
     link(rel='stylesheet', href='/stylesheets/main.css')
   body
     block content
-    .main.container
-      .row
-        .col-md-6.col-md-offset-3
-          h1.display-4.m-b-2 Enter Name and Message
-          form(method='POST' action='/login')
-            div.form-group
-              label(for='email') MyName(anything)
-              input.form-control(type='text' id='email' placeholder='email' name='email')
-            div.form-group
-              label(for='password') Message
-              input.form-control(type='password' id='password' placeholder='password' name='password')
-            button.btn.btn-primary(type='submit') Attach 
-   
+    br
+    br
+    br
+    hr
+    footer
+      p Ryan Gadz 2018
+          //- form(method='POST' action='/attach')
+          //-   div.form-group
+          //-     input.form-control(type='text' id='message' placeholder='message' name='message')           
+          //-     input.btn.btn-primary(type='submit', value= 'Attach') 
       
