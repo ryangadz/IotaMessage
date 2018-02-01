@@ -1,39 +1,16 @@
-﻿'use strict';
-var express = require('express');
-var router = express.Router();
 const IOTA = require('iota.lib.js');
-
-var executed = false;
-
-
-/* GET home page. */
-router.get('/', function (req, res) {
-    res.render('index', { title: 'Iota Message' });
-});
-
-
-router.post('/', function (req, res) {
-    if (!executed){
-    console.log('adding message: '+ req.body.message + ' to the tangle');
-    AttachMessage(req.body.message); 
-    };
-});
-
-
-function AttachMessage(newMessage){
+  
+function AttachMessage(){
     // IOTA node
     const iota = new IOTA({
     //  host: 'http://52.42.145.71', doesnt currently work with iota.api.sendTransfer
     //  host: 'http://node.iotawallet.info', // iota testnet node
-    //  host: 'http://p103.iotaledger.net',
         host: 'http://p103.iotaledger.net',
     //  host: 'https://testnet140.tangle.works'
     //  host: 'https://peanut.iotasalad.org',
-    //    host: 'http://wallets.iotamexico.com',
     //  port: 14265
-      port:14700
+        port:14700
     //  port:443
-    // port:80
     });
 
     iota.api.getNodeInfo((error, nodeInfo) => {
@@ -58,7 +35,7 @@ function AttachMessage(newMessage){
         var transfer = [{
             address: address,
             value: 0,
-            message: iota.utils.toTrytes(newMessage),
+            message: iota.utils.toTrytes('Hello World! again'),
             tag: ''
         }]
 
@@ -76,17 +53,9 @@ function AttachMessage(newMessage){
         
             if (!e) {
                 console.log("successfully attached", attached);
+
             }
             else console.log("failed sad face");
         })
-        executed = true;
     });
 };
-
-
-
-
-
-
-
-module.exports = router;
